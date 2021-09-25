@@ -44,12 +44,6 @@ protected:
   float position_dt = 0;
   float attitude_dt = 0;
 
-  // Setpoints
-
-  float x_position_target = 0;
-  float y_position_target = 0;
-  float z_position_target = 0;
-
 public:
   // Positon controllers
   float x_position_controller(const float x_position_target,
@@ -61,8 +55,7 @@ public:
   //                             const float pitch_angle_max,
   //                             const float pitch_angle_min, const float dt);
   float z_position_controller(const float z_position_target,
-                              const float z_position_now,
-                              const float thrust_max, const float thrust_min);
+                              const float z_position_now);
 
   // Attitude controller
   float roll_angle_controller(const float roll_angle_target,
@@ -85,6 +78,4 @@ public:
   void set_quad_properties(std::string path);
   // To load timescales from yaml
   void set_timescales(std::string path);
-  // To load setpoints from yaml
-  void set_setpoints(std::string path);
 };

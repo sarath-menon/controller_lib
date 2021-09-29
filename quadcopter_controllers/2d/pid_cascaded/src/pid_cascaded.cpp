@@ -2,8 +2,7 @@
 #include <iostream>
 
 float PidCascadedController::x_position_controller(
-    const float x_position_target, const float x_position_now,
-    const float roll_angle_max, const float roll_angle_min) {
+    const float x_position_target, const float x_position_now) {
 
   // x position pid variables
   static float e_i__x = 0;
@@ -19,7 +18,7 @@ float PidCascadedController::x_position_controller(
 
   // Limit roll angle to near zero to respect linearization
   roll_angle_command =
-      limit(roll_angle_command, roll_angle_max, roll_angle_min);
+      limit(roll_angle_command, roll_angle_max, -roll_angle_max);
 
   return roll_angle_command;
 };
@@ -35,24 +34,19 @@ float PidCascadedController::z_position_controller(
   // Compute error
   const float error = z_position_target - z_position_now;
 
-  std::cout << "Altitude error:" << error << '\n';
-  std::cout << "error values :" << e_i__z << '\t' << e_d__z << '\t' << e_prev__z
-            << '\n';
-
   // Compute control input
   float thrust_command =
       pid(error, k_p__z, k_i__z, k_d__z, dt, e_i__z, e_d__z, e_prev__z);
 
-  std::cout << "Raw thrust command:" << thrust_command << '\n';
   // Limit roll angle to near zero to respect linearization
-  thrust_command = limit(ff_thrust + thrust_command, thrust_max, thrust_min);
+  thrust_command =
+      limit(ff_thrust + thrust_command, net_thrust_max, net_thrust_min);
 
   return thrust_command;
 };
 
 float PidCascadedController::roll_angle_controller(
-    const float roll_angle_target, const float roll_angle_now,
-    const float roll_torque_max, const float roll_torque_min) {
+    const float roll_angle_target, const float roll_angle_now) {
 
   // x position pid variables
   static float e_i__roll = 0;
@@ -61,6 +55,7 @@ float PidCascadedController::roll_angle_controller(
 
   // Compute error
   const float error = roll_angle_target - roll_angle_now;
+  std::cout << "Roll angle error:" << error << '\n';
 
   // Compute control input
   float roll_torque_command = pid(error, k_p__roll, k_i__roll, k_d__roll, dt,
@@ -68,7 +63,7 @@ float PidCascadedController::roll_angle_controller(
 
   // Limit roll angle to near zero to respect linearization
   roll_torque_command =
-      limit(roll_torque_command, roll_torque_max, roll_torque_min);
+      limit(roll_torque_command, roll_torque_max, -roll_torque_max);
 
   return roll_torque_command;
 };

@@ -6,7 +6,7 @@
 
 class PidCascadedController {
 
-protected:
+private:
   // x position controller gains
   float k_p__x = 0; // [constant]
   float k_i__x = 0; // [constant]
@@ -35,8 +35,18 @@ protected:
   constexpr static float ff_thrust = 9.81;
 
   // Quadcopter properties
-  float thrust_max = 0;
-  float thrust_min = 0;
+  float arm_length = 0;
+
+  float propeller_thrust_max = 0;
+  float propeller_thrust_min = 0;
+
+  float net_thrust_max = 0;
+  float net_thrust_min = 0;
+
+  float roll_angle_max = 0;
+
+  float roll_torque_max = 0;
+  float roll_torque_min = 0;
 
   // Timescales
   int position_loop_rate = 0;
@@ -47,9 +57,7 @@ protected:
 public:
   // Positon controllers
   float x_position_controller(const float x_position_target,
-                              const float x_position_now,
-                              const float roll_angle_max,
-                              const float roll_angle_min);
+                              const float x_position_now);
   // float y_position_controller(const float y_position_target,
   //                             const float y_position_now,
   //                             const float pitch_angle_max,
@@ -59,9 +67,7 @@ public:
 
   // Attitude controller
   float roll_angle_controller(const float roll_angle_target,
-                              const float roll_angle_now,
-                              const float roll_torque_max,
-                              const float roll_torque_min);
+                              const float roll_angle_now);
   // float pitch_angle_controller(const float pitch_angle_target,
   //                              const float pitch_angle_now,
   //                              const float pitch_torque_max,

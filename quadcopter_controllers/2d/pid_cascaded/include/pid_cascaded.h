@@ -46,7 +46,6 @@ private:
   float roll_angle_max = 0;
 
   float roll_torque_max = 0;
-  float roll_torque_min = 0;
 
   // Timescales
   int position_loop_rate = 0;

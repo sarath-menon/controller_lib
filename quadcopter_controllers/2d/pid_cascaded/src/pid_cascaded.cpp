@@ -18,7 +18,7 @@ float PidCascadedController::x_position_controller(
 
   // Limit roll angle to near zero to respect linearization
   roll_angle_command =
-      limit(roll_angle_command, roll_angle_max, -roll_angle_max);
+      math_helper::limit(roll_angle_command, roll_angle_max, -roll_angle_max);
 
   return roll_angle_command;
 };
@@ -39,8 +39,8 @@ float PidCascadedController::z_position_controller(
       pid(error, k_p__z, k_i__z, k_d__z, dt, e_i__z, e_d__z, e_prev__z);
 
   // Limit roll angle to near zero to respect linearization
-  thrust_command =
-      limit(ff_thrust + thrust_command, net_thrust_max, net_thrust_min);
+  thrust_command = math_helper::limit(ff_thrust + thrust_command,
+                                      net_thrust_max, net_thrust_min);
 
   return thrust_command;
 };
@@ -62,8 +62,8 @@ float PidCascadedController::roll_angle_controller(
                                   e_i__roll, e_d__roll, e_prev__roll);
 
   // Limit roll angle to near zero to respect linearization
-  roll_torque_command =
-      limit(roll_torque_command, roll_torque_max, -roll_torque_max);
+  roll_torque_command = math_helper::limit(roll_torque_command, roll_torque_max,
+                                           -roll_torque_max);
 
   return roll_torque_command;
 };

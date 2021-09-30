@@ -8,8 +8,8 @@ void QuadcopterMixer::motor_mixer(float motor_commands[4],
   float f2 = (thrust_command / 4) + (torque_command / (2 * arm_length));
   float f4 = (thrust_command / 4) - (torque_command / (2 * arm_length));
 
-  f2 = limit(f2, motor_thrust_max, motor_thrust_min);
-  f4 = limit(f4, motor_thrust_max, motor_thrust_min);
+  f2 = math_helper::limit(f2, motor_thrust_max, motor_thrust_min);
+  f4 = math_helper::limit(f4, motor_thrust_max, motor_thrust_min);
 
   // In plane motors
   motor_commands[1] = sqrt(f2 / k_f);

@@ -1,6 +1,7 @@
 #pragma once
 #include "basic_controllers.h"
 #include "math_helper.h"
+#include "safety_checks.h"
 #include <string>
 #include <yaml-cpp/yaml.h>
 

@@ -1,6 +1,9 @@
 #include "pid_cascaded.h"
 
 void PidCascadedController::set_gains(std::string path) {
+  // Safety check, see if file exists
+  safety_checks::yaml_file_check(path);
+
   // Load yaml file containing gains
   YAML::Node controller_yaml = YAML::LoadFile(path);
 
@@ -34,6 +37,9 @@ void PidCascadedController::set_gains(std::string path) {
 };
 
 void PidCascadedController::set_quad_properties(std::string path) {
+  // Safety check, see if file exists
+  safety_checks::yaml_file_check(path);
+
   // Load yaml file containing quadcopter properties
   YAML::Node quad_yaml = YAML::LoadFile(path);
 

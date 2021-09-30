@@ -1,6 +1,10 @@
 #include "saturation_cutoff_mixer.h"
 
 void QuadcopterMixer::set_quad_properties(std::string path) {
+
+  // Safety check, see if file exists
+  safety_checks::yaml_file_check(path);
+
   // Load yaml file containing quadcopter properties
   YAML::Node mixer_yaml = YAML::LoadFile(path);
 

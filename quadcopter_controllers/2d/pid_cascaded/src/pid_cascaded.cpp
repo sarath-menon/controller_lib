@@ -55,7 +55,7 @@ float PidCascadedController::roll_angle_controller(
 
   // Compute error
   const float error = roll_angle_target - roll_angle_now;
-  std::cout << "Roll angle error:" << error << '\n';
+  // std::cout << "Roll angle error:" << error << '\n';
 
   // Compute control input
   float roll_torque_command = pid(error, k_p__roll, k_i__roll, k_d__roll, dt,

@@ -14,7 +14,7 @@ float PidCascadedController::x_position_controller(
 
   // Compute control input
   float roll_angle_command =
-      pid(error, k_p__x, k_i__x, k_d__x, dt, e_i__x, e_d__x, e_prev__x);
+      pid(error, k_p__x, k_i__x, k_d__x, dt, e_i__x, e_d__x, e_prev__x) / 9.81;
 
   // Limit roll angle to near zero to respect linearization
   roll_angle_command =

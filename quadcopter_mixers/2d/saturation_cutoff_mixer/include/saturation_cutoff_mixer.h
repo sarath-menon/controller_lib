@@ -16,8 +16,8 @@ private:
 
 public:
   // Mixer
-  void motor_mixer(float motor_commands[4], const float thrust_command,
-                   const float torque_command);
+  // void motor_mixer(float motor_commands[4], const float thrust_command,
+  //                  const float torque_command);
   // Mixer
   matrix::Vector<float, 4> motor_mixer(const float thrust_command,
                                        const float torque_command);

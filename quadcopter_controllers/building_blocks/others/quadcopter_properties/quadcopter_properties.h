@@ -26,5 +26,5 @@ protected:
 
 public:
   // To load quadcopter properties from yaml file
-  void set_properties(std::string path);
+  void set_quadcopter_properties(std::string path);
 };

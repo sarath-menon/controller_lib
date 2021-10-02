@@ -1,6 +1,6 @@
 #include "quadcopter_properties.h"
 
-void QuadProperties::set_properties(std::string path) {
+void QuadProperties::set_quadcopter_properties(std::string path) {
   // Safety check, see if file exists
   safety_checks::yaml_file_check(path);
 

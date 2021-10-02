@@ -8,9 +8,9 @@ void BasicPidCascaded::set_gains(std::string path) {
   YAML::Node yaml = YAML::LoadFile(path);
 
   // x position controller gains
-  x_pos.set_k_p(yaml["k_p__x"].as<float>()); // [constant]
-  x_pos.set_k_i(yaml["k_i__x"].as<float>()); // [constant]
-  x_pos.set_k_d(yaml["k_d__x"].as<float>()); // [constant]
+  y_pos.set_k_p(yaml["k_p__x"].as<float>()); // [constant]
+  y_pos.set_k_i(yaml["k_i__x"].as<float>()); // [constant]
+  y_pos.set_k_d(yaml["k_d__x"].as<float>()); // [constant]
 
   // z position controller gains
   z_pos.set_k_p(yaml["k_p__z"].as<float>()); // [constant]

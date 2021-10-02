@@ -1,6 +1,7 @@
 #pragma once
 #include "math_helper.h"
 #include "safety_checks.h"
+#include <matrix/math.hpp>
 #include <string>
 #include <yaml-cpp/yaml.h>
 
@@ -17,6 +18,9 @@ public:
   // Mixer
   void motor_mixer(float motor_commands[4], const float thrust_command,
                    const float torque_command);
+  // Mixer
+  matrix::Vector<float, 4> motor_mixer(const float thrust_command,
+                                       const float torque_command);
 
 public:
   // To load quadcopter properties from yaml file

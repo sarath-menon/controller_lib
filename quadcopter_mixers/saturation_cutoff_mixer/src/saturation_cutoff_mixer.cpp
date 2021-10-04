@@ -23,8 +23,8 @@ QuadcopterMixer::QuadcopterMixer() {
   mixer_matrix_(3, 3) = -0.25 / k_t;
 }
 
-matrix::Vector<float, 4>
-QuadcopterMixer::motor_mixer(matrix::Vector<float, 4> thrust_torque_command) {
+matrix::Vector<float, 4> QuadcopterMixer::motor_mixer(
+    const matrix::Vector<float, 4> thrust_torque_command) {
 
   matrix::Vector<float, 4> motor_thrusts =
       mixer_matrix_ * thrust_torque_command;

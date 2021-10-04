@@ -33,7 +33,7 @@ public:
 
   // Mixer
   matrix::Vector<float, 4>
-  motor_mixer(matrix::Vector<float, 4> thrust_torque_command);
+  motor_mixer(const matrix::Vector<float, 4> thrust_torque_command);
 
   // Vector of motor commands
   matrix::Vector<float, 4> motor_commands;

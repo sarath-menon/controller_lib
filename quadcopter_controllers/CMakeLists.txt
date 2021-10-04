@@ -4,9 +4,9 @@
 # # Library of complete quadcopter controllers
 # ###############################################################################
 
-add_library(quadcopter_controlers_lib INTERFACE)
+add_library(quadcopter_controllers_lib INTERFACE)
 
-target_link_libraries(quadcopter_controlers_lib INTERFACE
+target_link_libraries(quadcopter_controllers_lib INTERFACE
 building_blocks_lib
 full_controllers_lib
 )

@@ -1,5 +1,7 @@
 #include "basic_pid_cascaded.h"
 
+namespace controllers_2d {
+
 matrix::Vector<float, 4> BasicPidCascaded::cascaded_controller(
     const float position[3], const float orientation_euler[3],
     const matrix::Vector<float, 3> position_target) {
@@ -15,3 +17,5 @@ matrix::Vector<float, 4> BasicPidCascaded::cascaded_controller(
 
   return thrust_torque_cmd;
 };
+
+} // namespace controllers_2d

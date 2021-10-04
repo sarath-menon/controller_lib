@@ -5,6 +5,8 @@
 #include <string>
 #include <yaml-cpp/yaml.h>
 
+namespace controllers_2d {
+
 class BasicPidCascaded {
 
 private:
@@ -75,3 +77,5 @@ public:
   // To load timescales from yaml
   void set_timescales(std::string path);
 };
+
+} // namespace controllers_2d

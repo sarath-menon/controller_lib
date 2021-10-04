@@ -1,6 +1,7 @@
 #include "basic_pid_cascaded.h"
 #include "pid.h"
 
+namespace controllers_2d {
 float BasicPidCascaded::y_position_controller(const float y_position_target,
                                               const float y_position_now) {
 
@@ -24,3 +25,5 @@ float BasicPidCascaded::y_position_controller(const float y_position_target,
 
   return roll_angle_command;
 };
+
+} // namespace controllers_2d

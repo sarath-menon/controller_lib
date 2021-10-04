@@ -1,5 +1,7 @@
 #include "basic_pid_cascaded.h"
 
+namespace controllers_2d {
+
 void BasicPidCascaded::set_gains(std::string path) {
   // Safety check, see if file exists
   safety_checks::yaml_file_check(path);
@@ -60,3 +62,5 @@ void BasicPidCascaded::set_timescales(std::string path) {
   position_dt = 1 / position_loop_rate;
   attitude_dt = 1 / attitude_loop_rate;
 }
+
+} // namespace controllers_2d

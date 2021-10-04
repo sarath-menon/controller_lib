@@ -1,6 +1,8 @@
 #include "basic_pid_cascaded.h"
 #include "pid.h"
 
+namespace controllers_2d {
+
 float BasicPidCascaded::roll_angle_controller(const float roll_angle_target,
                                               const float roll_angle_now) {
 
@@ -24,3 +26,4 @@ float BasicPidCascaded::roll_angle_controller(const float roll_angle_target,
 
   return roll_torque_command;
 };
+} // namespace controllers_2d

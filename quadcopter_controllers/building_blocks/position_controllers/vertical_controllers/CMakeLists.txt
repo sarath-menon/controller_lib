@@ -1,0 +1,11 @@
+
+add_library(horizontal_controllers_lib STATIC
+basic_horizontal_controller/basic_horizontal_controller.cpp
+)
+
+target_include_directories(horizontal_controllers_lib PUBLIC basic_horizontal_controller)
+
+target_link_libraries(horizontal_controllers_lib PRIVATE
+basic_controllers_lib
+)
+

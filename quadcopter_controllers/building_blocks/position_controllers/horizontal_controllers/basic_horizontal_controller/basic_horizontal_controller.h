@@ -2,7 +2,7 @@
 #include "math_helper.h"
 #include "pid.h"
 
-class AxesPid {
+class BasicHorizontalController {
 
 protected:
   // PID gains

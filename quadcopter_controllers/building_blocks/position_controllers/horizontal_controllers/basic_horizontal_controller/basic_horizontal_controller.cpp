@@ -2,7 +2,8 @@
 #include "pid.h"
 
 // Positon controllers
-float AxesPid::controller(const float error, const float feedforward) {
+float BasicHorizontalController::controller(const float error,
+                                            const float feedforward) {
 
   // x position pid variables
   static float e_i = 0;

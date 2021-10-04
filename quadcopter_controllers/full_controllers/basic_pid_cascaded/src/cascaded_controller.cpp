@@ -7,11 +7,11 @@ matrix::Vector<float, 4> BasicPidCascaded::cascaded_controller(
   // Outer loop
   thrust_torque_cmd(0) = z_position_controller(position_target(2), position[2]);
 
-  roll_angle_command = y_position_controller(position_target(0), position[0]);
+  roll_angle_command = y_position_controller(position_target(1), position[1]);
 
   // Inner loop
   thrust_torque_cmd(1) =
-      roll_angle_controller(roll_angle_command, -orientation_euler[1]);
+      roll_angle_controller(roll_angle_command, -orientation_euler[0]);
 
   return thrust_torque_cmd;
 };

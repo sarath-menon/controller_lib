@@ -3,7 +3,8 @@
 namespace controllers_2d {
 
 matrix::Vector<float, 4> BasicPidCascaded::cascaded_controller(
-    const float position[3], const float orientation_euler[3],
+    const std::array<double, 3> position,
+    const std::array<double, 3> orientation_euler,
     const matrix::Vector<float, 3> position_target) {
 
   // Outer loop

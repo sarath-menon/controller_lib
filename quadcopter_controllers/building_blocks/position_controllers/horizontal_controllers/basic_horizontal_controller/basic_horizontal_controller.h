@@ -1,32 +1,42 @@
 #pragma once
+#include "basic_axis_controller.h"
 #include "math_helper.h"
 #include "pid.h"
+
+namespace horizontal_controllers {
 
 class BasicHorizontalController {
 
 protected:
-  // PID gains
-  float k_p = 0; // [constant]
-  float k_i = 0; // [constant]
-  float k_d = 0; // [constant]
+  float dt_ = 0;
 
-  // limits
-  float min = 0;
-  float max = 0;
-
-  // controller ate
-  float dt = 0;
+  float x_cmd_ = 0;
+  float y_cmd_ = 0;
 
 public:
-  float controller(const float error, const float feedforward = 0);
+  axis_controllers::BasicAxisController x_axis_ctrl;
+  axis_controllers::BasicAxisController y_axis_ctrl;
 
 public:
-  // Set k_p gain
-  void set_k_p(float val) { k_p = val; }
-  // Set k_i gain
-  void set_k_i(float val) { k_i = val; }
-  // Set k_p gain
-  void set_k_d(float val) { k_d = val; }
+  void controller(const float x_target, const float y_target,
+                  const float x_current, const float y_current);
+
+public:
+  /// Getter function
+  const float x_cmd() const { return x_cmd_; }
+
+  /// Getter function
+  const float y_cmd() const { return y_cmd_; }
+
+  /// Getter function
+  const float dt() const { return dt_; }
+
   // Set controller rate
-  void set_rate(float val) { dt = val; }
+  void set_rate(float dt) {
+    dt_ = dt;
+    x_axis_ctrl.set_rate(dt);
+    y_axis_ctrl.set_rate(dt);
+  }
 };
+
+} // namespace horizontal_controllers

@@ -2,7 +2,9 @@
 #include "math_helper.h"
 #include "pid.h"
 
-class BasicHorizontalController {
+namespace axis_controllers {
+
+class BasicAxisController {
 
 protected:
   // PID gains
@@ -15,10 +17,11 @@ protected:
   float max = 0;
 
   // controller ate
-  float dt = 0;
+  float dt_ = 0;
 
 public:
-  float controller(const float error, const float feedforward = 0);
+  float controller(const float target, const float current_val,
+                   const float feedforward = 0);
 
 public:
   // Set k_p gain
@@ -28,5 +31,7 @@ public:
   // Set k_p gain
   void set_k_d(float val) { k_d = val; }
   // Set controller rate
-  void set_rate(float val) { dt = val; }
+  void set_rate(float dt) { dt_ = dt; }
 };
+
+} // namespace axis_controllers

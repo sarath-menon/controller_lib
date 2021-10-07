@@ -1,0 +1,14 @@
+
+add_library(roll_pitch_controllers_lib STATIC
+basic_roll_pitch_controller/basic_roll_pitch_controller.cpp
+)
+
+target_include_directories(roll_pitch_controllers_lib PUBLIC 
+basic_roll_pitch_controller
+)
+
+target_link_libraries(roll_pitch_controllers_lib PRIVATE
+basic_controllers_lib
+axis_controllers_lib
+)
+

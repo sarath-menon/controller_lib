@@ -3,13 +3,12 @@
 # # Library of complete quadcopter controllers
 # ###############################################################################
 
-add_library(full_controllers_lib INTERFACE)
+add_library(3d_controllers_lib INTERFACE)
 
-target_link_libraries(full_controllers_lib INTERFACE
-2d_controllers_lib
-3d_controllers_lib
+target_link_libraries(3d_controllers_lib INTERFACE
+basic_pid_cascaded_3d
 )
 
 
-add_subdirectory(2d)
-add_subdirectory(3d)
+add_subdirectory(basic_pid_cascaded)
+

@@ -10,8 +10,8 @@ private:
   constexpr static float ff_thrust = 9.81;
 
 protected:
-  float dt_ = 0;
-  float z_cmd_ = 0;
+  float dt_{};
+  float z_cmd_{};
 
 public:
   axis_controllers::BasicAxisController z_axis_ctrl;

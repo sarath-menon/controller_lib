@@ -11,39 +11,39 @@ class BasicPidCascaded {
 
 private:
   // y position controller gains
-  float k_p__y = 0; // [constant]
-  float k_i__y = 0; // [constant]
-  float k_d__y = 0; // [constant]
+  float k_p__y{}; // [constant]
+  float k_i__y{}; // [constant]
+  float k_d__y{}; // [constant]
   // z position controller gains
-  float k_p__z = 0; // [constant]
-  float k_i__z = 0; // [constant]
-  float k_d__z = 0; // [constant]
+  float k_p__z{}; // [constant]
+  float k_i__z{}; // [constant]
+  float k_d__z{}; // [constant]
   // roll angle controller parameters
-  float k_p__roll = 0; // [constant]
-  float k_i__roll = 0; // [constant]
-  float k_d__roll = 0; // [constant]
+  float k_p__roll{}; // [constant]
+  float k_i__roll{}; // [constant]
+  float k_d__roll{}; // [constant]
 
 private:
   // Quadcopter properties
-  float arm_length = 0;
+  float arm_length{};
 
-  float propeller_thrust_max = 0;
-  float propeller_thrust_min = 0;
+  float propeller_thrust_max{};
+  float propeller_thrust_min{};
 
-  float net_thrust_max = 0;
-  float net_thrust_min = 0;
+  float net_thrust_max{};
+  float net_thrust_min{};
 
-  float roll_angle_max = 0;
-  float roll_torque_max = 0;
+  float roll_angle_max{};
+  float roll_torque_max{};
 
   // Timescales
-  int position_loop_rate = 0;
-  int attitude_loop_rate = 0;
+  int position_loop_rate{};
+  int attitude_loop_rate{};
 
-  float position_dt = 0;
-  float attitude_dt = 0;
+  float position_dt{};
+  float attitude_dt{};
 
-  float dt = 0;
+  float dt{};
 
   // Control commands
   matrix::Vector<float, 4> thrust_torque_cmd;

@@ -8,10 +8,10 @@ namespace horizontal_controllers {
 class BasicHorizontalController {
 
 protected:
-  float dt_ = 0;
+  float dt_{};
 
-  float x_cmd_ = 0;
-  float y_cmd_ = 0;
+  float x_cmd_{};
+  float y_cmd_{};
 
 public:
   axis_controllers::BasicAxisController x_axis_ctrl;

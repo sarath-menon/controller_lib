@@ -8,10 +8,10 @@ namespace roll_pitch_controllers {
 class BasicRollPitchController {
 
 protected:
-  float dt_ = 0;
+  float dt_{};
 
-  float roll_cmd_ = 0;
-  float pitch_cmd_ = 0;
+  float roll_cmd_{};
+  float pitch_cmd_{};
 
 public:
   axis_controllers::BasicAxisController roll_ctrl;

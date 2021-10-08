@@ -17,7 +17,7 @@ public:
 
 private:
   // Simulation timestep
-  float dt = 0;
+  float dt{};
   matrix::Vector<float, 4> thrust_torque_cmd;
 
 public:

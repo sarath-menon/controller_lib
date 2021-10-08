@@ -8,16 +8,16 @@ class BasicAxisController {
 
 protected:
   // PID gains
-  float k_p = 0; // [constant]
-  float k_i = 0; // [constant]
-  float k_d = 0; // [constant]
+  float k_p{}; // [constant]
+  float k_i{}; // [constant]
+  float k_d{}; // [constant]
 
   // limits
-  float min = 0;
-  float max = 0;
+  float min{};
+  float max{};
 
   // controller ate
-  float dt_ = 0;
+  float dt_{};
 
 public:
   float controller(const float target, const float current_val,

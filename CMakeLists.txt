@@ -9,6 +9,7 @@ target_link_libraries(controller_lib INTERFACE
 basic_controllers_lib
 quadcopter_controllers_lib 
 quadcopter_mixers_lib
+utilities_lib
 )
 
 

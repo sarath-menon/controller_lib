@@ -16,6 +16,9 @@ void QuadcopterMixer::set_quad_properties(std::string path) {
   motor_thrust_max = mixer_yaml["motor_thrust_max"].as<float>();
   motor_thrust_min = mixer_yaml["motor_thrust_min"].as<float>();
 
-  // float thrust_max = motor_thrust_max * 4.0;
-  // float thrust_min = motor_thrust_min * 4.0;
+  thrust_max = motor_thrust_max * 4.0;
+  thrust_min = motor_thrust_min * 4.0;
+
+  // Set mixer matrux using above parameters
+  this->set_mixer_matrix();
 }

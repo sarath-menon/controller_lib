@@ -11,26 +11,21 @@ class QuadcopterMixer {
 
 private:
   // Quadcopter Properties
-  float arm_length = 0.171;
+  float arm_length{};
 
-  float k_f = 6.11e-8;
-  float k_t = 1.5e-9;
+  float k_f{};
+  float k_t{};
 
   // Individual motor thrust max, min
-  float motor_thrust_max = 0;
-  float motor_thrust_min = 0;
+  float motor_thrust_max{};
+  float motor_thrust_min{};
 
   // Quadcopter net thrust max, min
-  float thrust_max = 27;
-  float thrust_min = 7;
+  float thrust_max{};
+  float thrust_min{};
 
 public:
-  QuadcopterMixer();
-
   // Mixer
-  // matrix::Vector<float, 4>
-  // motor_mixer(const matrix::Vector<float, 4> thrust_torque_cmd);
-
   msgs::QuadMotorCommand
   motor_mixer(const msgs::ThrustTorqueCommand thrust_torque_cmd);
 
@@ -44,4 +39,7 @@ public:
 public:
   // To load quadcopter properties from yaml file
   void set_quad_properties(std::string path);
+
+  // Set mixer matrix
+  void set_mixer_matrix();
 };

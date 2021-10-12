@@ -1,7 +1,7 @@
 #include "saturation_cutoff_mixer.h"
 #include <iostream>
 
-QuadcopterMixer::QuadcopterMixer() {
+void QuadcopterMixer::set_mixer_matrix() {
   mixer_matrix_(0, 0) = 0.25;
   mixer_matrix_(0, 1) = 0.0;
   mixer_matrix_(0, 2) = 0.5 / arm_length;
@@ -25,7 +25,6 @@ QuadcopterMixer::QuadcopterMixer() {
 
 msgs::QuadMotorCommand QuadcopterMixer::motor_mixer(
     const msgs::ThrustTorqueCommand thrust_torque_cmd) {
-
   matrix::Vector<float, 4> thrust_torque_cmd_;
 
   thrust_torque_cmd_(0) = thrust_torque_cmd.thrust;

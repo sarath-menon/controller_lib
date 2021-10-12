@@ -1,6 +1,7 @@
 #pragma once
 #include "geometry_msgs/msgs/Pose.h"
 #include "math_helper.h"
+#include "quadcopter_msgs/msgs/ThrustTorqueCommand.h"
 #include "safety_checks.h"
 #include <matrix/math.hpp>
 #include <string>
@@ -47,7 +48,8 @@ private:
   float dt{};
 
   // Control commands
-  matrix::Vector<float, 4> thrust_torque_cmd;
+  // matrix::Vector<float, 4> thrust_torque_cmd;
+  msgs::ThrustTorqueCommand thrust_torque_cmd;
   float roll_angle_command;
 
   // Feedforward thrust
@@ -55,9 +57,9 @@ private:
 
 public:
   // Cascaded controller
-  matrix::Vector<float, 4>
-  cascaded_controller(const msgs::Pose pose,
-                      const matrix::Vector<float, 3> position_target);
+  msgs::ThrustTorqueCommand
+  cascaded_controller(const msgs::Pose &pose,
+                      const matrix::Vector<float, 3> &position_target);
 
   // Decoupled controllers
   float y_position_controller(const float y_position_target,

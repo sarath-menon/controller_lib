@@ -1,5 +1,6 @@
 #pragma once
 #include "math_helper.h"
+#include "quadcopter_msgs/msgs/ThrustTorqueCommand.h"
 #include "safety_checks.h"
 #include <matrix/math.hpp>
 #include <string>
@@ -23,17 +24,14 @@ private:
   float thrust_min = 7;
 
 public:
-  // Mixer
-  // void motor_mixer(float motor_commands[4], const float thrust_command,
-  //                  const float torque_command);
-  // Mixer
-
-  // Initialize mixer matrix
   QuadcopterMixer();
 
   // Mixer
+  // matrix::Vector<float, 4>
+  // motor_mixer(const matrix::Vector<float, 4> thrust_torque_command);
+
   matrix::Vector<float, 4>
-  motor_mixer(const matrix::Vector<float, 4> thrust_torque_command);
+  motor_mixer(const msgs::ThrustTorqueCommand thrust_torque_command);
 
   // Vector of motor commands
   matrix::Vector<float, 4> motor_commands;

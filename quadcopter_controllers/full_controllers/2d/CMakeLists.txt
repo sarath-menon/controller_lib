@@ -7,6 +7,7 @@ add_library(2d_controllers_lib INTERFACE)
 
 target_link_libraries(2d_controllers_lib INTERFACE
 basic_pid_cascaded_2d
+comm_lib
 )
 
 

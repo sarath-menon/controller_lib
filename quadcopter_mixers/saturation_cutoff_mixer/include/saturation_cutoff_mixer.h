@@ -13,6 +13,7 @@ private:
   // Quadcopter Properties
   float arm_length{};
 
+  // Motor constants: thrust-speed^2 and torque-speed^2
   float k_f{};
   float k_t{};
 
@@ -26,11 +27,10 @@ private:
 
 public:
   // Mixer
-  msgs::QuadMotorCommand
-  motor_mixer(const msgs::ThrustTorqueCommand thrust_torque_cmd);
+  msgs::QuadMotorCommand &
+  motor_mixer(const msgs::ThrustTorqueCommand &thrust_torque_cmd);
 
   // Vector of motor commands
-  // matrix::Vector<float, 4> motor_commands;
   msgs::QuadMotorCommand motor_cmd;
 
   // Mixer Matrix

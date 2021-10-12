@@ -2,15 +2,16 @@
 
 namespace controllers_2d {
 
-msgs::ThrustTorqueCommand BasicPidCascaded::cascaded_controller(
-    const msgs::Pose &pose, const matrix::Vector<float, 3> &position_target) {
+msgs::ThrustTorqueCommand &
+BasicPidCascaded::cascaded_controller(const msgs::Pose &pose,
+                                      const msgs::Pose &pose_setpoint) {
 
   // Outer loop
   thrust_torque_cmd.thrust =
-      z_position_controller(position_target(2), pose.position.z);
+      z_position_controller(pose_setpoint.position.z, pose.position.z);
 
   roll_angle_command =
-      y_position_controller(position_target(1), pose.position.y);
+      y_position_controller(pose_setpoint.position.y, pose.position.y);
 
   // Inner loop
   thrust_torque_cmd.roll_torque =

@@ -57,9 +57,8 @@ private:
 
 public:
   // Cascaded controller
-  msgs::ThrustTorqueCommand
-  cascaded_controller(const msgs::Pose &pose,
-                      const matrix::Vector<float, 3> &position_target);
+  msgs::ThrustTorqueCommand &
+  cascaded_controller(const msgs::Pose &pose, const msgs::Pose &pose_setpoint);
 
   // Decoupled controllers
   float y_position_controller(const float y_position_target,

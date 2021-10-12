@@ -1,5 +1,6 @@
 #pragma once
 #include "math_helper.h"
+#include "quadcopter_msgs/msgs/QuadMotorCommand.h"
 #include "quadcopter_msgs/msgs/ThrustTorqueCommand.h"
 #include "safety_checks.h"
 #include <matrix/math.hpp>
@@ -28,13 +29,14 @@ public:
 
   // Mixer
   // matrix::Vector<float, 4>
-  // motor_mixer(const matrix::Vector<float, 4> thrust_torque_command);
+  // motor_mixer(const matrix::Vector<float, 4> thrust_torque_cmd);
 
-  matrix::Vector<float, 4>
-  motor_mixer(const msgs::ThrustTorqueCommand thrust_torque_command);
+  msgs::QuadMotorCommand
+  motor_mixer(const msgs::ThrustTorqueCommand thrust_torque_cmd);
 
   // Vector of motor commands
-  matrix::Vector<float, 4> motor_commands;
+  // matrix::Vector<float, 4> motor_commands;
+  msgs::QuadMotorCommand motor_cmd;
 
   // Mixer Matrix
   matrix::SquareMatrix<float, 4> mixer_matrix_;

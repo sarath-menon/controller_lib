@@ -48,9 +48,8 @@ private:
   float dt{};
 
   // Control commands
-  // matrix::Vector<float, 4> thrust_torque_cmd;
-  msgs::ThrustTorqueCommand thrust_torque_cmd;
-  float roll_angle_command;
+  msgs::ThrustTorqueCommand thrust_torque_cmd{};
+  float roll_angle_command{};
 
   // Feedforward thrust
   constexpr static float ff_thrust = 9.81;

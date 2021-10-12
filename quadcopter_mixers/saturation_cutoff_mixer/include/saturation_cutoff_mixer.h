@@ -25,13 +25,13 @@ private:
   float thrust_max{};
   float thrust_min{};
 
+  // Vector of motor commands
+  msgs::QuadMotorCommand motor_cmd{};
+
 public:
   // Mixer
   msgs::QuadMotorCommand &
   motor_mixer(const msgs::ThrustTorqueCommand &thrust_torque_cmd);
-
-  // Vector of motor commands
-  msgs::QuadMotorCommand motor_cmd;
 
   // Mixer Matrix
   matrix::SquareMatrix<float, 4> mixer_matrix_;

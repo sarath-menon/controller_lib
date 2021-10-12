@@ -56,11 +56,6 @@ private:
 public:
   // Cascaded controller
   matrix::Vector<float, 4>
-  cascaded_controller(const std::array<double, 3> position,
-                      const std::array<double, 3> orientation_euler,
-                      const matrix::Vector<float, 3> position_target);
-
-  matrix::Vector<float, 4>
   cascaded_controller(const msgs::Pose pose,
                       const matrix::Vector<float, 3> position_target);
 

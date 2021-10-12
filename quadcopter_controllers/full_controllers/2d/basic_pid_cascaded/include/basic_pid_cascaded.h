@@ -1,4 +1,5 @@
 #pragma once
+#include "geometry_msgs/msgs/Pose.h"
 #include "math_helper.h"
 #include "safety_checks.h"
 #include <matrix/math.hpp>
@@ -57,6 +58,10 @@ public:
   matrix::Vector<float, 4>
   cascaded_controller(const std::array<double, 3> position,
                       const std::array<double, 3> orientation_euler,
+                      const matrix::Vector<float, 3> position_target);
+
+  matrix::Vector<float, 4>
+  cascaded_controller(const msgs::Pose pose,
                       const matrix::Vector<float, 3> position_target);
 
   // Decoupled controllers

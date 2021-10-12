@@ -11,6 +11,7 @@ target_include_directories(basic_pid_cascaded_2d PUBLIC include)
 
 target_link_libraries(basic_pid_cascaded_2d PRIVATE
 basic_controllers_lib
+comm_lib
 yaml-cpp
 )
 

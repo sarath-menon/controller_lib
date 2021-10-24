@@ -2,9 +2,9 @@
 
 namespace controllers_2d {
 
-msgs::ThrustTorqueCommand &
-BasicPidCascaded::cascaded_controller(const msgs::Pose &pose,
-                                      const msgs::Pose &pose_setpoint) {
+cpp_msg::ThrustTorqueCommand &
+BasicPidCascaded::cascaded_controller(const cpp_msg::Pose &pose,
+                                      const cpp_msg::Pose &pose_setpoint) {
 
   // Outer loop
   thrust_torque_cmd.thrust =

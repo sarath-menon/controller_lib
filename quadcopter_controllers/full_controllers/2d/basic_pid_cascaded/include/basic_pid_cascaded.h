@@ -48,7 +48,7 @@ private:
   float dt{};
 
   // Control commands
-  msgs::ThrustTorqueCommand thrust_torque_cmd{};
+  cpp_msg::ThrustTorqueCommand thrust_torque_cmd{};
   float roll_angle_command{};
 
   // Feedforward thrust
@@ -56,8 +56,9 @@ private:
 
 public:
   // Cascaded controller
-  msgs::ThrustTorqueCommand &
-  cascaded_controller(const msgs::Pose &pose, const msgs::Pose &pose_setpoint);
+  cpp_msg::ThrustTorqueCommand &
+  cascaded_controller(const cpp_msg::Pose &pose,
+                      const cpp_msg::Pose &pose_setpoint);
 
   // Decoupled controllers
   float y_position_controller(const float y_position_target,

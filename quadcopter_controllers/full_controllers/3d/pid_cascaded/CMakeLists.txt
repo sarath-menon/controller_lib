@@ -2,8 +2,8 @@
 add_library(pid_cascaded_3d STATIC
 src/cascaded_controller.cpp
 src/z_position_controller.cpp
-src/y_position_controller.cpp
-src/roll_angle_controller.cpp
+src/horizontal_controllers.cpp
+src/angle_controllers.cpp
 src/set_values.cpp
 )
 

@@ -9,10 +9,15 @@ void BasicPidCascaded::set_gains(std::string path) {
   // Load yaml file containing gains
   YAML::Node controller_yaml = YAML::LoadFile(path);
 
-  // x position controller gains
+  // y position controller gains
   k_p__y = controller_yaml["k_p__y"].as<float>(); // [constant]
   k_i__y = controller_yaml["k_i__y"].as<float>(); // [constant]
   k_d__y = controller_yaml["k_d__y"].as<float>(); // [constant]
+
+  // x position controller gains
+  k_p__x = controller_yaml["k_p__x"].as<float>(); // [constant]
+  k_i__x = controller_yaml["k_i__x"].as<float>(); // [constant]
+  k_d__x = controller_yaml["k_d__x"].as<float>(); // [constant]
 
   // z position controller gains
   k_p__z = controller_yaml["k_p__z"].as<float>(); // [constant]
@@ -23,6 +28,11 @@ void BasicPidCascaded::set_gains(std::string path) {
   k_p__roll = controller_yaml["k_p__roll"].as<float>(); // [constant]
   k_i__roll = controller_yaml["k_i__roll"].as<float>(); // [constant]
   k_d__roll = controller_yaml["k_d__roll"].as<float>(); // [constant]
+
+  // pitch angle controller gains
+  k_p__pitch = controller_yaml["k_p__pitch"].as<float>(); // [constant]
+  k_i__pitch = controller_yaml["k_i__pitch"].as<float>(); // [constant]
+  k_d__pitch = controller_yaml["k_d__pitch"].as<float>(); // [constant]
 
   // simulation timestep
   dt = controller_yaml["dt"].as<float>(); // [constant]
@@ -47,8 +57,10 @@ void BasicPidCascaded::set_quad_properties(std::string path) {
   net_thrust_min = propeller_thrust_min * 4;
 
   roll_angle_max = quad_yaml["roll_angle_max"].as<float>(); // [constant]
-
   roll_torque_max = (propeller_thrust_max - propeller_thrust_min) * arm_length;
+
+  pitch_angle_max = quad_yaml["pitch_angle_max"].as<float>(); // [constant]
+  pitch_torque_max = roll_torque_max;
 }
 
 void BasicPidCascaded::set_timescales(std::string path) {

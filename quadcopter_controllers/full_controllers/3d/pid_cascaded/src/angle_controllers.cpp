@@ -26,4 +26,29 @@ float BasicPidCascaded::roll_angle_controller(const float roll_angle_target,
 
   return roll_torque_command;
 };
+
+float BasicPidCascaded::pitch_angle_controller(const float pitch_angle_target,
+                                               const float pitch_angle_now) {
+
+  // x position pid variables
+  static float e_i__pitch = 0;
+  static float e_d__pitch = 0;
+  static float e_prev__pitch = 0;
+
+  // Compute error
+  const float error = pitch_angle_target - pitch_angle_now;
+  // std::cout << "pitch angle error:" << error << '\n';
+
+  // Compute control input
+  float pitch_torque_command =
+      basic_controllers::pid(error, k_p__pitch, k_i__pitch, k_d__pitch, dt,
+                             e_i__pitch, e_d__pitch, e_prev__pitch);
+
+  // Limit roll angle to near zero to respect linearization
+  pitch_torque_command = math_helper::limit(
+      pitch_torque_command, pitch_torque_max, -pitch_torque_max);
+
+  return pitch_torque_command;
+};
+
 } // namespace controllers_3d

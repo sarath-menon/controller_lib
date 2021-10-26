@@ -1,6 +1,7 @@
 #pragma once
 #include "geometry_msgs/msgs/Pose.h"
 #include "math_helper.h"
+#include "quadcopter_msgs/msgs/QuadPositionCmd.h"
 #include "quadcopter_msgs/msgs/ThrustTorqueCommand.h"
 #include "safety_checks.h"
 #include <matrix/math.hpp>
@@ -59,6 +60,11 @@ public:
   cpp_msg::ThrustTorqueCommand &
   cascaded_controller(const cpp_msg::Pose &pose,
                       const cpp_msg::Pose &pose_setpoint);
+
+  // Cascaded controller new
+  cpp_msg::ThrustTorqueCommand &
+  cascaded_controller(const cpp_msg::Pose &pose,
+                      const cpp_msg::QuadPositionCmd &pos_setpoint);
 
   // Decoupled controllers
   float y_position_controller(const float y_position_target,

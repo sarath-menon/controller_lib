@@ -2,7 +2,7 @@
 
 namespace controllers_3d {
 
-void BasicPidCascaded::set_gains(std::string path) {
+void BasicPidCascaded::set_gains(const std::string &path) {
   // Safety check, see if file exists
   safety_checks::yaml_file_check(path);
 
@@ -38,7 +38,7 @@ void BasicPidCascaded::set_gains(std::string path) {
   dt = controller_yaml["dt"].as<float>(); // [constant]
 };
 
-void BasicPidCascaded::set_quad_properties(std::string path) {
+void BasicPidCascaded::set_quad_properties(const std::string &path) {
   // Safety check, see if file exists
   safety_checks::yaml_file_check(path);
 
@@ -63,7 +63,7 @@ void BasicPidCascaded::set_quad_properties(std::string path) {
   pitch_torque_max = roll_torque_max;
 }
 
-void BasicPidCascaded::set_timescales(std::string path) {
+void BasicPidCascaded::set_timescales(const std::string &path) {
   // Load yaml file containing quadcopter properties
   YAML::Node timescale_yaml = YAML::LoadFile(path);
 

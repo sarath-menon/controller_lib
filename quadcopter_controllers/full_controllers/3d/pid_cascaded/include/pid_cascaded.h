@@ -99,13 +99,13 @@ public:
                                const float pitch_angle_now);
 
   // To load gain vaules from yaml file
-  void set_gains(std::string path);
+  void set_gains(const std::string &path);
 
   // To load quadcopter properties from yaml file
-  void set_quad_properties(std::string path);
+  void set_quad_properties(const std::string &path);
 
   // To load timescales from yaml
-  void set_timescales(std::string path);
+  void set_timescales(const std::string &path);
 };
 
 } // namespace controllers_3d

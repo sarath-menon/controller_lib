@@ -40,6 +40,9 @@ public:
   // To load quadcopter properties from yaml file
   void set_quad_properties(std::string path);
 
-  // Set mixer matrix
-  void set_mixer_matrix();
+  // Set mixer matrix x
+  void set_mixer_matrix_x();
+
+  // Set mixer matrix plus
+  void set_mixer_matrix_plus();
 };

@@ -1,6 +1,9 @@
 
 add_library(saturation_cutoff_mixer STATIC
-src/saturation_cutoff_mixer.cpp
+src/mixer.cpp
+src/mixer_matrix_x.cpp
+src/mixer_matrix_plus.cpp
+src/mixer.cpp
 src/set_values.cpp
 )
 

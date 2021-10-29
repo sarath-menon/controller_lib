@@ -19,6 +19,25 @@ void QuadcopterMixer::set_quad_properties(std::string path) {
   thrust_max = motor_thrust_max * 4.0;
   thrust_min = motor_thrust_min * 4.0;
 
+  // Load quadcopter type
+  std::string quad_type = mixer_yaml["type"].as<std::string>();
+
   // Set mixer matrux using above parameters
-  this->set_mixer_matrix();
+
+  if (quad_type.compare("plus") == false) {
+    this->set_mixer_matrix_plus();
+    std::cout << "Plus type mixer loaded";
+  }
+
+  else if (quad_type.compare("x") == false) {
+    this->set_mixer_matrix_x();
+    std::cout << "X type mixer loaded";
+  }
+
+  else {
+    std::cerr << "Invalid mixer";
+  }
+
+  // // Set mixer matrux using above parameters
+  // this->set_mixer_matrix_x();
 }

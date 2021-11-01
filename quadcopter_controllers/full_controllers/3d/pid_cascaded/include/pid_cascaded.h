@@ -40,6 +40,7 @@ private:
 
 private:
   // Quadcopter properties
+  float mass{};
   float arm_length{};
 
   float propeller_thrust_max{};

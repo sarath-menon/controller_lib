@@ -46,20 +46,23 @@ void BasicPidCascaded::set_quad_properties(const std::string &path) {
   YAML::Node quad_yaml = YAML::LoadFile(path);
 
   // Set quadcopter properties
+  mass = quad_yaml["mass"].as<float>(); // [constant]
+
   arm_length = quad_yaml["arm_length"].as<float>(); // [constant]
 
+  // Don't forget mass normalization
   propeller_thrust_max =
-      quad_yaml["motor_thrust_max"].as<float>(); // [constant]
+      quad_yaml["motor_thrust_max"].as<float>() / mass; // [constant]
   propeller_thrust_min =
-      quad_yaml["motor_thrust_min"].as<float>(); // [constant]
+      quad_yaml["motor_thrust_min"].as<float>() / mass; // [constant]
 
   net_thrust_max = propeller_thrust_max * 4;
   net_thrust_min = propeller_thrust_min * 4;
 
-  roll_angle_max = quad_yaml["roll_angle_max"].as<float>(); // [constant]
-  roll_torque_max = (propeller_thrust_max - propeller_thrust_min) * arm_length;
-
+  roll_angle_max = quad_yaml["roll_angle_max"].as<float>();   // [constant]
   pitch_angle_max = quad_yaml["pitch_angle_max"].as<float>(); // [constant]
+
+  roll_torque_max = (propeller_thrust_max - propeller_thrust_min) * arm_length;
   pitch_torque_max = roll_torque_max;
 }
 
